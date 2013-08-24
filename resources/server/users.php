@@ -10,6 +10,8 @@ $username = false;
 if (isset($_GET['user'])) {
     $username = $_GET['user'];
     $_SESSION['username'] = $username;
+    header('Location: ../index.php');
+    
 } else if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 }
@@ -28,7 +30,7 @@ function getUsers() {
 }
 
 function getFilename() {
-    return 'users.json';
+    return 'data/users.json';
 }
 
 function init() {
