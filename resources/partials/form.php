@@ -1,3 +1,19 @@
+<div ng-switch on="selection">
+    <div ng-switch-when="new">
+        <ul class="breadcrumb">
+            <li><a href="#dash">Home</a> <span class="divider">/</span></li>
+            <li class="active">Create</li>
+        </ul>
+    </div>
+    <div ng-switch-default>
+        <ul class="breadcrumb">
+            <li><a href="#dash">Home</a> <span class="divider">/</span></li>
+            <li><a href="#ticket/{{ticket.id}}">{{ticket.title}}</a> <span class="divider">/</span>            </li>
+            <li class="active">Edit</li>
+        </ul>
+    </div>
+</div>
+
 <div class="well">
 
     <div class="alert alert-success" style="display: none;">
@@ -11,8 +27,9 @@
     <form ng-submit="submit()" class="form-horizontal">
 
         <input type="hidden" ng-model="ticket.id">
-        
-        <div class="control-group">
+        <input type="hidden" ng-model="ticket.status_id" value="{{ticket.status_id}}">
+
+<!--        <div class="control-group">
             <label class="control-label" for="status">* Status:</label>
             <div class="controls">
                 <select id="status" ng-model="ticket.status_id" required>
@@ -23,7 +40,7 @@
                     <option value="5">DONE</option>
                 </select>
             </div>
-        </div>
+        </div>-->
 
         <div class="control-group">
             <label class="control-label" for="title">* Title:</label>
@@ -32,23 +49,23 @@
             </div>
         </div>
 
-<!--        <div class="control-group">
-            <label class="control-label" for="due-date">* Due date:</label>
-            <div class="controls">
-                <div id="due-date-date" class="input-append">
-                    <input data-format="yyyy-MM-dd" type="text" ng-model="ticket.due_date" required>
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
-                </div>
-                <div id="due-date-time" class="input-append">
-                    <input data-format="hh:mm" type="text" ng-model="ticket.due_time" required>
-                    <span class="add-on">
-                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
-                    </span>
-                </div>
-            </div>
-        </div>-->
+        <!--        <div class="control-group">
+                    <label class="control-label" for="due-date">* Due date:</label>
+                    <div class="controls">
+                        <div id="due-date-date" class="input-append">
+                            <input data-format="yyyy-MM-dd" type="text" ng-model="ticket.due_date" required>
+                            <span class="add-on">
+                                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                            </span>
+                        </div>
+                        <div id="due-date-time" class="input-append">
+                            <input data-format="hh:mm" type="text" ng-model="ticket.due_time" required>
+                            <span class="add-on">
+                                <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>-->
 
         <div class="control-group">
             <label class="control-label" for="type">* Type:</label>

@@ -7,17 +7,21 @@ session_start();
 header('Content-Type: application/json');
 
 $username = false;
-if (isset($_GET['user'])) {
+if (isset($_GET['user']))
+{
     $username = $_GET['user'];
-    $_SESSION['username'] = $username;
+    $_SESSION['user_username'] = $username;
     header('Location: ../index.php');
-    
-} else if (isset($_SESSION['username'])) {
-    $username = $_SESSION['username'];
+}
+else if (isset($_SESSION['user_username']))
+{
+    $username = $_SESSION['user_username'];
 }
 
-if ($username) {
+if ($username)
+{
     $users = getUsers();
+    $_SESSION['user_name'] = $users[$username]['name'];
     echo json_encode($users[$username]);
 }
 
@@ -25,15 +29,18 @@ if ($username) {
  *  FUNCTIONS
  */
 
-function getUsers() {
+function getUsers()
+{
     return unserialize(file_get_contents(getFilename()));
 }
 
-function getFilename() {
+function getFilename()
+{
     return 'data/users.json';
 }
 
-function init() {
+function init()
+{
     $users = array(
         'r' =>
         array('id' => '1', 'username' => 'david', 'name' => 'David Roland', 'role' => 'requestor', 'actions' => array('new', 'edit', 'cancel')),

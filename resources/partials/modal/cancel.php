@@ -11,7 +11,7 @@
         <div class="control-group">
             <label class="control-label" for="comment">* Comment:</label>
             <div class="controls row-fluid">
-                <textarea id="comment" ng-model="ticket.comment" required class="span12" style="resize: vertical;"></textarea>
+                <textarea id="comment" ng-model="comment" required class="span12" style="resize: vertical;"></textarea>
             </div>
         </div>
 

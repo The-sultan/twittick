@@ -1,5 +1,15 @@
 <?php
 
+//
+//$tickets = getTickets();
+//foreach ($tickets as $id => $field)
+//{
+//    $tickets[$id]['activity'] = array();
+//}
+// save($tickets);
+//die;
+session_start();
+
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] == 'PUT')
@@ -9,7 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 }
 else if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-    edit();
+    if (isset($_REQUEST['delete']) AND $_REQUEST['delete'] == 'true')
+    {
+        delete();
+    }
+    else
+    {
+        edit();
+    }
     echo json_encode('true');
 }
 else
@@ -72,21 +89,46 @@ function edit()
     $fields = getFields();
     $id = $_REQUEST['id'];
 
-    $activity = array();
+    if (!isset($tickets[$_REQUEST['id']]['activity']))
+    {
+        $tickets[$_REQUEST['id']]['activity'] = array();
+    }
+
     foreach ($fields as $field)
     {
         if (isset($_REQUEST[$field]))
         {
-            if ($_REQUEST[$field] AND $tickets[$_REQUEST['id']][$field] != $_REQUEST[$field])
+            $activity = array();
+            if ($tickets[$_REQUEST['id']][$field] != $_REQUEST[$field])
             {
-                $activity[] = $field . ': ' . $tickets[$_REQUEST['id']][$field] . ' -> ' . $_REQUEST[$field];
+                if (in_array($field, array('status_id', 'type_id', 'priority_id')))
+                {
+                    $method = 'get' . ucfirst(str_replace('_id', '', $field)) . 'Name';
+                    $activity['field'] = ucfirst(str_replace('_id', '', $field));
+                    $activity['change'] = $method($tickets[$_REQUEST['id']][$field]) . ' -> ' . $method($_REQUEST[$field]);
+                }
+                else
+                {
+                    $activity['field'] = $field;
+                    $activity['change'] = $tickets[$_REQUEST['id']][$field] . ' -> ' . $_REQUEST[$field];
+                }
+
+
+                if (isset($_REQUEST['comment']))
+                {
+                    $activity['comment'] = $_REQUEST['comment'];
+                }
+
+                $activity['date'] = date("F j, Y, g:i a");
+                $activity['user'] = $_SESSION['user_name'];
             }
+
             $tickets[$_REQUEST['id']][$field] = $_REQUEST[$field];
-            if (!isset($tickets[$_REQUEST['id']]['activity']))
+
+            if (count($activity))
             {
-                $tickets[$_REQUEST['id']]['activity'] = array();
+                $tickets[$_REQUEST['id']]['activity'][] = $activity;
             }
-            $tickets[$_REQUEST['id']]['activity'][] = $activity;
         }
     }
 
@@ -107,6 +149,13 @@ function edit()
         $tickets[$id]['type'] = $type[$tickets[$id]['type_id']];
     }
 
+    save($tickets);
+}
+
+function delete()
+{
+    $tickets = getTickets();
+    unset($tickets[$_REQUEST['id']]);
     save($tickets);
 }
 
@@ -145,6 +194,33 @@ function getTypeArray()
     return array(1 => 'Applications', 2 => 'Connectivity', 3 => 'Hardware', 4 => 'Merchandising', 5 => 'Security');
 }
 
+function getStatusName($id)
+{
+    $data = getStatusArray();
+    if (isset($data[$id]))
+    {
+        return $data[$id];
+    }
+}
+
+function getPriorityName($id)
+{
+    $data = getPriorityArray();
+    if (isset($data[$id]))
+    {
+        return $data[$id];
+    }
+}
+
+function getTypeName($id)
+{
+    $data = getTypeArray();
+    if (isset($data[$id]))
+    {
+        return $data[$id];
+    }
+}
+
 //$tickets = array(
 //    1 =>
 //    array('id' => '1', 'title' => 'title1', 'description' => 'c description1', 'status_id' => '3', 'priority_id' => '2', 'type_id' => '2'),
@@ -154,3 +230,4 @@ function getTypeArray()
 //    array('id' => '3', 'title' => 'title3', 'description' => 'a description3', 'status_id' => '2', 'priority_id' => '3', 'type_id' => '3')
 //);
 //file_put_contents($filename, serialize($tickets));die;
+

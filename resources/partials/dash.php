@@ -2,7 +2,7 @@
 
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Cool!</strong> The ticket was successfuly removed. <a href="#">Undo</a>.
+    <strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.
 </div>
 
 <div>
@@ -28,7 +28,7 @@
                 <th>Type</th>
                 <th>Status</th>
                 <th>Priority</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,19 +38,54 @@
                 <td>{{ticket.status}}</td>
                 <td>{{ticket.priority}}</td>
                 <td>
-                    <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
-                    <?php if ($_SESSION['username'] == 'r') : ?>
-                        <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" bs-modal="'partials/modal/cancel.php'"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#" bs-modal="'partials/modal/cancel.php'"><i class="icon-trash"></i> Delete</a>
-                    <?php elseif ($_SESSION['username'] == 'a') : ?>
-                        <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-thumbs-up"></i> Approve</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-thumbs-down"></i> Reject</a>&nbsp;&nbsp;&nbsp;
-                        <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>
-                    <?php elseif ($_SESSION['username'] == 'e') : ?>
-                        <a href="#" ng-click="markAsDone($ticket)"><i class="icon-check"></i> Mark as Done</a>
-                    <?php endif; ?>
+                    <?php if ($_SESSION['user_username'] == 'r') : ?>
 
+                        <div ng-switch on="ticket.status">
+                            <div ng-switch-when="NEW">
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="cancelTicket(ticket.id)"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="deleteTicket(ticket.id)"><i class="icon-trash"></i> Delete</a>
+                            </div>
+                            <div ng-switch-when="APPROVED">
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" bs-modal="'partials/modal/cancel.php'"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="deleteTicket(ticket.id)"><i class="icon-trash"></i> Delete</a>
+                            </div>
+                            <div ng-switch-default>
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="deleteTicket(ticket.id)"><i class="icon-trash"></i> Delete</a>
+                            </div>
+                        </div>
+
+                    <?php elseif ($_SESSION['user_username'] == 'a') : ?>
+                        <div ng-switch on="ticket.status">
+                            <div ng-switch-when="NEW">
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="approveTicket(ticket.id)"><i class="icon-thumbs-up"></i> Approve</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="rejectTicket(ticket.id)"><i class="icon-thumbs-down"></i> Reject</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="cancelTicket(ticket.id)"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div ng-switch-when="APPROVED">
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
+                            </div>
+                            <div ng-switch-default>
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
+                            </div>
+                        </div>
+                    <?php elseif ($_SESSION['user_username'] == 'e') : ?>
+                     <div ng-switch on="ticket.status">
+                            <div ng-switch-when="APPROVED">
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" ng-click="doneTicket(ticket.id)"><i class="icon-check"></i> Mark as Done</a>
+                            </div>
+                            <div ng-switch-default>
+                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
                 </td>
             </tr>
         </tbody>

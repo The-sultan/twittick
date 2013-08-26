@@ -18,7 +18,7 @@
                     <a class="brand" href="#">Twittick</a>
                     <ul class="nav">
                         <li><a href="#/dash">View tickets</a></li>
-                        <?php if ($_SESSION['username'] == 'r') : ?>
+                        <?php if ($_SESSION['user_username'] == 'r') : ?>
                             <li><a href="#/new">Create ticket</a></li>
                         <?php endif; ?>
                     </ul>
