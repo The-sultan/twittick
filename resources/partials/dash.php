@@ -1,8 +1,9 @@
 <?php session_start(); ?>
 
-<div class="alert alert-success">
+<div class="alert alert-success" style="display: none;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.
+    <span class="tw-alert-message"> </span>
+    <!--<strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.-->
 </div>
 
 <div>

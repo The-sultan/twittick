@@ -1,4 +1,4 @@
-function DashCtrl($scope, $rootScope, ticketService, userService) {
+function DashCtrl($scope, $rootScope, $route, ticketService, userService) {
 
     ticketService.getTickets().then(function(data) {
         $scope.tickets = data;
@@ -15,40 +15,38 @@ function DashCtrl($scope, $rootScope, ticketService, userService) {
         });
     };
 
-
-
     $scope.approveTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticket.status_id = '2';
         ticketService.updateTicket($.param(ticket)).then(function(data) {
-            $scope.$apply();
+            $route.reload();
         });
     };
     $scope.cancelTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticket.status_id = '3';
         ticketService.updateTicket($.param(ticket)).then(function(data) {
-            $scope.$apply();
+            $route.reload();
         });
     };
     $scope.rejectTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticket.status_id = '4';
         ticketService.updateTicket($.param(ticket)).then(function(data) {
-            $scope.$apply();
+            $route.reload();
         });
     };
     $scope.doneTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticket.status_id = '5';
         ticketService.updateTicket($.param(ticket)).then(function(data) {
-            $scope.$apply();
+            $route.reload();
         });
     };
     $scope.deleteTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticketService.deleteTicket($.param(ticket)).then(function(data) {
-            $scope.$apply();
+            $route.reload();
         });
     };
 
