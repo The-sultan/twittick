@@ -39,7 +39,7 @@
                 <td>{{ticket.status}}</td>
                 <td>{{ticket.priority}}</td>
                 <td>
-                    <?php if ($_SESSION['user_username'] == 'r') : ?>
+                    <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
 
                         <div ng-switch on="ticket.status">
                             <div ng-switch-when="NEW">
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                    <?php elseif ($_SESSION['user_username'] == 'a') : ?>
+                    <?php elseif ($_SESSION['user']['role'] == 'approver') : ?>
                         <div ng-switch on="ticket.status">
                             <div ng-switch-when="NEW">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
@@ -76,7 +76,7 @@
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
                             </div>
                         </div>
-                    <?php elseif ($_SESSION['user_username'] == 'e') : ?>
+                    <?php elseif ($_SESSION['user']['role'] == 'executor') : ?>
                      <div ng-switch on="ticket.status">
                             <div ng-switch-when="APPROVED">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;

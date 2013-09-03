@@ -78,21 +78,31 @@ twittick.service('ticketService', function($http, $q, $routeParams) {
     return ticketService;
 });
 
-twittick.service('userService', function($http, $q) {
-    var userService = {};
-    userService.apiPath = 'server/users.php';
-
-    userService.getUser = function() {
-
-        var deferred = $q.defer();
-
-        $http.get(userService.apiPath).success(function(data) {
-            deferred.resolve(data);
-        }).error(function() {
-            deferred.reject("An error occured when fetching data");
-        });
-
-        return deferred.promise;
+// source: http://jsfiddle.net/dBR2r/8/
+angular.module('SharedServices', [])
+        .config(function($httpProvider) {
+    $httpProvider.responseInterceptors.push('myHttpInterceptor');
+    var spinnerFunction = function(data, headersGetter) {
+        // todo start the spinner here
+        $('#tw-loading').show();
+        return data;
     };
-    return userService;
-});
+    $httpProvider.defaults.transformRequest.push(spinnerFunction);
+})
+// register the interceptor as a service, intercepts ALL angular ajax http calls
+        .factory('myHttpInterceptor', function($q, $window) {
+    return function(promise) {
+        return promise.then(function(response) {
+            // do something on success
+            // todo hide the spinner
+            $('#tw-loading').hide();
+            return response;
+
+        }, function(response) {
+            // do something on error
+            // todo hide the spinner
+            $('#tw-loading').hide();
+            return $q.reject(response);
+        });
+    };
+})

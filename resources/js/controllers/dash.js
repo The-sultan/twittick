@@ -1,11 +1,7 @@
-function DashCtrl($scope, $rootScope, $route, ticketService, userService) {
+function DashCtrl($scope, $rootScope, $route, ticketService) {
 
     ticketService.getTickets().then(function(data) {
         $scope.tickets = data;
-    });
-
-    userService.getUser().then(function(data) {
-        $rootScope.user = data;
     });
 
     $scope.submitCancelTicket = function(index) {

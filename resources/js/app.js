@@ -1,4 +1,4 @@
-angular.module('twittick', ['$strap.directives', 'twittick.services']).
+angular.module('twittick', ['$strap.directives', 'twittick.services', 'SharedServices']).
         config(['$routeProvider', function($routeProvider) {
         $routeProvider.
                 when('/dash', {templateUrl: 'partials/dash.php', controller: DashCtrl}).

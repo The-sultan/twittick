@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php require_once 'server/login.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en" ng-app="twittick">
@@ -7,7 +7,8 @@
         <link href="css/lib/bootstrap.min.css" rel="stylesheet">
         <link href="css/lib/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="css/lib/font-awesome.min.css" rel="stylesheet">
-
+        <link href="css/tw.css" rel="stylesheet">
+        
     </head>
     <body>
 
@@ -18,19 +19,19 @@
                     <a class="brand" href="#">Twittick</a>
                     <ul class="nav">
                         <li><a href="#/dash">View tickets</a></li>
-                        <?php if ($_SESSION['user_username'] == 'r') : ?>
+                        <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
                             <li><a href="#/new">Create ticket</a></li>
                         <?php endif; ?>
                     </ul>
                     <div class="pull-right">
                         <ul class="nav pull-right">
-                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, {{user.name}} ({{user.role}})<b class="caret"></b></a>
+                            <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Welcome, <?php echo $_SESSION['user']['name'] ?> (<?php echo $_SESSION['user']['role'] ?>)<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="server/users.php?user=r"><i class="icon-user"></i> Login as requestor</a></li>
+<!--                                    <li><a href="server/users.php?user=r"><i class="icon-user"></i> Login as requestor</a></li>
                                     <li><a href="server/users.php?user=a"><i class="icon-user"></i> Login as approver</a></li>
                                     <li><a href="server/users.php?user=e"><i class="icon-user"></i> Login as executor</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="/auth/logout"><i class="icon-off"></i> Logout</a></li>
+                                    <li class="divider"></li>-->
+                                    <li><a href="login.php?logout=1"><i class="icon-off"></i> Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -38,6 +39,8 @@
                 </div>
             </div>
 
+            <div id="tw-loading">Loading...</div>
+            
             <div ng-view></div>
 
         </div>

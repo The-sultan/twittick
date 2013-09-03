@@ -120,7 +120,7 @@ function edit()
                 }
 
                 $activity['date'] = date("F j, Y, g:i a");
-                $activity['user'] = $_SESSION['user_name'];
+                $activity['user'] = $_SESSION['user']['name'];
             }
 
             $tickets[$_REQUEST['id']][$field] = $_REQUEST[$field];
