@@ -78,6 +78,26 @@ twittick.service('ticketService', function($http, $q, $routeParams) {
     return ticketService;
 });
 
+twittick.service('userService', function($http, $q) {
+    var userService = {};
+    userService.apiPath = 'server/user.php';
+
+    userService.setListView = function(is_list) {
+
+        var deferred = $q.defer();
+
+        $http.get(userService.apiPath + '?is_list_view=' + is_list).success(function(data) {
+            deferred.resolve(data);
+        }).error(function() {
+            deferred.reject("An error occured when fetching data");
+        });
+
+        return deferred.promise;
+    };
+
+    return userService;
+});
+
 // source: http://jsfiddle.net/dBR2r/8/
 angular.module('SharedServices', [])
         .config(function($httpProvider) {

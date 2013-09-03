@@ -1,4 +1,4 @@
-function DashCtrl($scope, $rootScope, $route, ticketService) {
+function DashCtrl($scope, $route, ticketService, userService) {
 
     ticketService.getTickets().then(function(data) {
         $scope.tickets = data;
@@ -46,6 +46,11 @@ function DashCtrl($scope, $rootScope, $route, ticketService) {
         });
     };
 
+    $scope.setListView = function(is_list) {
+        userService.setListView(is_list).then(function(data) {
+            $route.reload();
+        });
+    };
 }
 
 function getTicket(id, tickets) {

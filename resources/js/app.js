@@ -1,4 +1,4 @@
-angular.module('twittick', ['$strap.directives', 'twittick.services', 'SharedServices']).
+var twittickApp = angular.module('twittick', ['$strap.directives', 'twittick.services', 'SharedServices']).
         config(['$routeProvider', function($routeProvider) {
         $routeProvider.
                 when('/dash', {templateUrl: 'partials/dash.php', controller: DashCtrl}).
@@ -9,4 +9,10 @@ angular.module('twittick', ['$strap.directives', 'twittick.services', 'SharedSer
                 otherwise({redirectTo: '/dash'});
     }]);
 
-
+// disable template cache
+twittickApp.run(function($rootScope, $templateCache) {
+    $rootScope.$on('$viewContentLoaded', function() {
+        console.log('cache');
+        $templateCache.removeAll();
+    });
+});
