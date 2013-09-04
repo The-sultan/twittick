@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <div class="alert alert-success" style="display: none;">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <span class="tw-alert-message"> </span>
@@ -16,10 +18,10 @@
         <option value="description">description</option>
     </select>
 
-    Dash View: <a href="#" ng-click="setListView(1)" class="btn">List</a> / <a href="#" ng-click="setListView(0)" class="btn">Box</a>
+    Dash View: <a href="#dashlist" ng-click="setListView(1)" class="btn">List</a> / <a href="#dashbox" ng-click="setListView(0)" class="btn">Box</a>
     
 </div>
-
+<h3>esto sería el dash con los boxes/thumbs</h3>
 
 <div>
     <table class="table">
