@@ -1,9 +1,5 @@
 <?php 
 
-//init();
-
-$CONFIG_BASE_URL = 'http://10.120.10.58/twittick/resources/';
-
 session_start();
 
 // logout
@@ -13,28 +9,31 @@ if (isset($_GET['logout']) AND $_GET['logout'] == '1') {
 // login
 else if (isset($_POST['user']) AND isset($_POST['pass'])) {
 
-    $users = getUsers();
+	$users = getUsers();
 
     // login successful
     if (isset($users[$_POST['user']]) AND $users[$_POST['user']]['password'] === $_POST['pass']) {
+		
         $_SESSION['user'] = $users[$_POST['user']];
+		if(!array_key_exists('is_list_view', $_SESSION['user']))
+			$_SESSION['user']['is_list_view'] = true;
         $hash = '#/dash' . (($_SESSION['user']['is_list_view']) ? 'list' : 'box');
-        header('Location: ' . $CONFIG_BASE_URL . 'index.php' . $hash);
+        header('Location: ' . '../index.php' . $hash);
     }
     // login error
     else {
         unset($_SESSION['user']);
-        header('Location: ' . $CONFIG_BASE_URL . 'login.php?error=1');
+        header('Location: ' . '../login.php?error=1');
     }
 }
 // already logged in
 else if (isset($_SESSION['user']) AND $_SESSION['user'] AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/index.php') {
     $hash = '#/dash' . (($_SESSION['user']['is_list_view']) ? 'list' : 'box');
-    header('Location: ' . $CONFIG_BASE_URL . 'index.php' . $hash);
+    header('Location: ' . '../index.php' . $hash);
 }
 // not logged in, redirect to login page
 else if (!isset($_SESSION['user']) AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/login.php') {
-    header('Location: ' . $CONFIG_BASE_URL . 'login.php');
+	header('Location: ' . '../login.php');
 }
 
 function getUsers() {
