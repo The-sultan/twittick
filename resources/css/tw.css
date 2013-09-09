@@ -19,3 +19,172 @@
     border-bottom-right-radius: 7px; 
     border-bottom-left-radius: 7px;
 }
+
+
+/*******************************************************************************/
+
+body{
+    font: fontawesome;
+}
+
+
+.tw-box {
+    border: 2px #eee solid;
+    border-radius: 6px;
+    padding: 10px;
+    margin-top: 10%;
+}
+
+.tw-login-form {
+    margin: 40px;
+}
+
+.tw-form-required{
+    color: #FF0000;
+    font-weight: bold;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner{
+    box-shadow: none;
+    border-width: 0;
+    /* border-bottom-width: 10px; */
+}
+
+.tw-header-box{
+    background-color: #12769c;
+    background-image: none;
+    border-bottom: 10px solid #055F81;
+    box-shadow: none;
+    height: 40px;    
+}
+
+.tw-twitter-bird{
+   background-image: url("../img/twitter-logo-white.png");
+    background-size: 25px 21px;
+    height: 21px;
+    left: 0;
+    position: absolute;
+    top: 3px;
+    width: 25px;
+}
+
+.tw-margin5{
+    margin-left: 5%;
+}
+
+.tw-h1{
+    margin-bottom: 30px;
+}
+
+.tw-logo {
+    font-size: 22px;
+    padding-left: 35px;
+    position: relative;
+    top: 10px;
+    color: #fefefe;
+}
+
+#logo:hover{ 
+    text-decoration: none;
+    color: #fefefe;
+}
+
+.tw-btn-primary{
+    background-color: #12769C;
+    background-image: linear-gradient(to bottom, #09678A, #06516D);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.tw-align-right{
+    float: right;
+    margin-top: 9px;    
+}
+.tw-icon-white{
+    background-image: url("../img/glyphicons_halflings-white.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.tw-icon-white{
+    background-image: url("../img/glyphicons_halflings-white.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+a .tw-icon-user{
+    background-position: -169px 0;
+    height: 14px;
+    width: 14px;   
+}
+
+.tw-a{
+    height: 20px;
+    width: 15px;
+}
+
+.tw-white{
+    border-top-color: #FFFFFF;
+}
+
+.tw-menu-navbar{
+    content: "";
+    line-height: 0;
+    clear: both;
+    border-width: 0 0 2px;
+    background-color: #ebebeb;
+    background-image: none;
+    border-bottom-color: #d8d7d7;
+    height: 48px;
+}
+
+
+input.search-query {
+    border-radius: 15px 15px 15px 15px;
+    left: 12px;
+    margin-bottom: 0;
+    padding-left: 10px;
+    padding-right: 24px;
+}
+
+.tw-search{
+    left: -24px;
+    position: relative;
+}
+
+.tw-btn-toolbar{
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 0;
+}
+
+.tw-btn-view{
+    background-color: #C3C3C3;
+    background-image: linear-gradient(to bottom, #E6E6E6, #C3C3C3);
+}
+
+.tw-caret-black{
+    border-bottom-color: #000000;
+    border-top-color: #000000;
+}
+.tw-table-container{
+	width: 100%;
+	background-color: #ebebeb;
+	border-radius: 6px;
+	overflow: auto;
+	margin-top: 15px;
+}
+.tw-ticket-table{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+	
+}
+
+.tw-ticket-table thead tr{
+	background-color: white;
+}

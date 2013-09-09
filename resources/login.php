@@ -8,16 +8,18 @@
         <link href="css/lib/bootstrap-responsive.min.css" rel="stylesheet">
         <link href="css/lib/font-awesome.min.css" rel="stylesheet">
         <link href="css/tw.css" rel="stylesheet">
+        <link href="css/fonts.css" rel="stylesheet">
 
     </head>
     <body>
 
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a href="/" id="logo" title="Home">
-                        <span class="twitter-bird"></span> Twittick        
-                    </a>
+        <div class="navbar navbar-fixed-top tw-header-box">
+            <div class="navbar-inner tw-header-box">
+                <div class="container">                    
+                    <a href="/" id="logo" class="tw-logo" title="Home">
+                        <span class="tw-twitter-bird"></span> Twittick        
+
+                    </a>                   
                 </div>
             </div>
         </div>
@@ -32,26 +34,28 @@
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Error!</strong> Please check credentials
                     </div>
-                    <?php endif; ?>
-                    <h1>Sign in to Twitter Twittick</h1>
+                    <?php endif; ?>                    
+                    <h1 class="tw-h1">Sign in to Twitter Twittick</h1>
                     <div class="control-group">
-                        <label class="control-label" for="inputEmail">Email</label>
+                        <label class="control-label" for="inputEmail">Username or email:
+                            <span class="tw-form-required" title="This field is required.">*</span>
+                        </label>
                         <div class="controls">
-                            <input name="user" type="text" id="inputEmail" placeholder="Email" class="span4">
+                            <input name="user" type="text" id="inputEmail" placeholder="Email" class="span4">                            
                         </div>
                     </div>
                     <div class="control-group">
-                        <label class="control-label" for="inputPassword">Password</label>
+                        <label class="control-label" for="inputPassword">Password: <span class="tw-form-required" title="This field is required.">*</span></label>
                         <div class="controls">
                             <input name="pass" type="password" id="inputPassword" placeholder="Password" class="span4">
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <label class="checkbox">
+                            <button type="submit" class="btn tw-btn-primary btn-info inline">Sign in</button>
+                            <label class="checkbox inline tw-margin5">
                                 <input type="checkbox"> Remember me
-                            </label>
-                            <button type="submit" class="btn btn-info">Sign in</button>
+                            </label>                            
                         </div>
                     </div>
                     <div>
@@ -67,4 +71,4 @@
 
 
     </body>
-</html> 
+</html>

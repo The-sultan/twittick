@@ -23,8 +23,8 @@
 </div>
 
 
-<div>
-    <table class="table">
+<div class="tw-table-container">
+    <table class="tw-ticket-table table">
         <thead>
             <tr>
                 <th>Title</th>
@@ -69,13 +69,19 @@
                                 <a href="#" ng-click="approveTicket(ticket.id)"><i class="icon-thumbs-up"></i> Approve</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="rejectTicket(ticket.id)"><i class="icon-thumbs-down"></i> Reject</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="cancelTicket(ticket.id)"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
+								
                             </div>
                             <div ng-switch-when="APPROVED">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#/ticket/{{ticket.id}}/edit"><i class="icon-edit"></i> Edit</a>&nbsp;&nbsp;&nbsp;
                             </div>
                             <div ng-switch-default>
-                                <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
+                                <!--<a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>-->
+								<div class="btn-group">
+								  <button class="btn tw-btn-primary"><i class="icon-ok"/></button>
+								  <button class="btn tw-btn-primary"><i class="icon-pencil"/></button>
+								  <button class="btn tw-btn-primary"><i class="icon-remove"/></button>
+								</div>
                             </div>
                         </div>
                     <?php elseif ($_SESSION['user']['role'] == 'executor') : ?>
@@ -86,6 +92,11 @@
                             </div>
                             <div ng-switch-default>
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
+								<div class="btn-group">
+								  <button class="btn">Left</button>
+								  <button class="btn">Middle</button>
+								  <button class="btn">Right</button>
+								</div>
                             </div>
                         </div>
                     <?php endif; ?>

@@ -29,7 +29,7 @@ else if (isset($_POST['user']) AND isset($_POST['pass'])) {
 // already logged in
 else if (isset($_SESSION['user']) AND $_SESSION['user'] AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/index.php') {
     $hash = '#/dash' . (($_SESSION['user']['is_list_view']) ? 'list' : 'box');
-    header('Location: ' . '../index.php' . $hash);
+    header('Location: ' . 'index.php' . $hash);
 }
 // not logged in, redirect to login page
 else if (!isset($_SESSION['user']) AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/login.php') {

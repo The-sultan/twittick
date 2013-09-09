@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* CSS Document */
+@font-face {
+    font-family: fontawesome;
+
+    src: url("../font/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), 
+        url("../font/fontawesome-webfont.woff") format("woff"), 
+        url("../font/fontawesome-webfont.ttf") format("truetype"), 
+        url("../font/FontAwesome.otf") format('opentype'), 
+        url("../font/fontawesome-webfont.svg#fontawesome") format("svg");
+}
