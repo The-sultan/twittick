@@ -6,22 +6,11 @@
     <!--<strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.-->
 </div>
 <h1>List View</h1>
-<div>
 
-    Search: <input ng-model="query"> /
-    Sort by: 
-    <select ng-model="orderProp">
-        <option value="title">title</option>
-        <option value="status_id">status</option>
-        <option value="priority_id">priority</option>
-        <option value="type_id">type</option>
-        <option value="description">description</option>
-    </select>
-    
-    Dash View: <a href="#dashlist" ng-click="setListView(1)" class="btn">List</a> / <a href="#dashbox" ng-click="setListView(0)" class="btn">Box</a>
-
+<div class="btn-group pull-right" data-toggle="buttons-radio">
+    <a href="#dashlist" ng-click="setListView(1)" type="button" class="btn tw-btn-view active"><i class="icon-th-large"></i></a>
+    <a href="#dashbox" ng-click="setListView(0)" type="button" class="btn tw-btn-view"><i class="icon-th-list"></i></a>
 </div>
-
 
 <div class="tw-table-container">
     <table class="tw-ticket-table table">
@@ -69,7 +58,7 @@
                                 <a href="#" ng-click="approveTicket(ticket.id)"><i class="icon-thumbs-up"></i> Approve</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="rejectTicket(ticket.id)"><i class="icon-thumbs-down"></i> Reject</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="cancelTicket(ticket.id)"><i class="icon-remove"></i> Cancel</a>&nbsp;&nbsp;&nbsp;
-								
+
                             </div>
                             <div ng-switch-when="APPROVED">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
@@ -77,26 +66,26 @@
                             </div>
                             <div ng-switch-default>
                                 <!--<a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>-->
-								<div class="btn-group">
-								  <button class="btn tw-btn-primary"><i class="icon-ok"/></button>
-								  <button class="btn tw-btn-primary"><i class="icon-pencil"/></button>
-								  <button class="btn tw-btn-primary"><i class="icon-remove"/></button>
-								</div>
+                                <div class="btn-group">
+                                    <button class="btn tw-btn-primary"><i class="icon-ok"/></button>
+                                    <button class="btn tw-btn-primary"><i class="icon-pencil"/></button>
+                                    <button class="btn tw-btn-primary"><i class="icon-remove"/></button>
+                                </div>
                             </div>
                         </div>
                     <?php elseif ($_SESSION['user']['role'] == 'executor') : ?>
-                     <div ng-switch on="ticket.status">
+                        <div ng-switch on="ticket.status">
                             <div ng-switch-when="APPROVED">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="doneTicket(ticket.id)"><i class="icon-check"></i> Mark as Done</a>
                             </div>
                             <div ng-switch-default>
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>
-								<div class="btn-group">
-								  <button class="btn">Left</button>
-								  <button class="btn">Middle</button>
-								  <button class="btn">Right</button>
-								</div>
+                                <div class="btn-group">
+                                    <button class="btn">Left</button>
+                                    <button class="btn">Middle</button>
+                                    <button class="btn">Right</button>
+                                </div>
                             </div>
                         </div>
                     <?php endif; ?>

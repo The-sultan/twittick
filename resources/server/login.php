@@ -1,46 +1,55 @@
-<?php 
+<?php
 
 session_start();
 
 // logout
-if (isset($_GET['logout']) AND $_GET['logout'] == '1') {
+if (isset($_GET['logout']) AND $_GET['logout'] == '1')
+{
     unset($_SESSION['user']);
 }
 // login
-else if (isset($_POST['user']) AND isset($_POST['pass'])) {
+else if (isset($_POST['user']) AND isset($_POST['pass']))
+{
 
-	$users = getUsers();
+    $users = getUsers();
 
     // login successful
-    if (isset($users[$_POST['user']]) AND $users[$_POST['user']]['password'] === $_POST['pass']) {
-		
+    if (isset($users[$_POST['user']]) AND $users[$_POST['user']]['password'] === $_POST['pass'])
+    {
+
         $_SESSION['user'] = $users[$_POST['user']];
-		if(!array_key_exists('is_list_view', $_SESSION['user']))
-			$_SESSION['user']['is_list_view'] = true;
+        if (!array_key_exists('is_list_view', $_SESSION['user']))
+            $_SESSION['user']['is_list_view'] = true;
+        
         $hash = '#/dash' . (($_SESSION['user']['is_list_view']) ? 'list' : 'box');
-        header('Location: ' . '../index.php' . $hash);
+        header('Location: ' . '/index.php' . $hash);
     }
     // login error
-    else {
+    else
+    {
         unset($_SESSION['user']);
-        header('Location: ' . '../login.php?error=1');
+        header('Location: ' . '/login.php?error=1');
     }
 }
 // already logged in
-else if (isset($_SESSION['user']) AND $_SESSION['user'] AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/index.php') {
+else if (isset($_SESSION['user']) AND $_SESSION['user'] AND $_SERVER['SCRIPT_NAME'] != '/index.php')
+{
     $hash = '#/dash' . (($_SESSION['user']['is_list_view']) ? 'list' : 'box');
     header('Location: ' . 'index.php' . $hash);
 }
 // not logged in, redirect to login page
-else if (!isset($_SESSION['user']) AND $_SERVER['SCRIPT_NAME'] != '/twittick/resources/login.php') {
-	header('Location: ' . '../login.php');
+else if (!isset($_SESSION['user']) AND $_SERVER['SCRIPT_NAME'] != '/login.php')
+{
+    header('Location: ' . '/login.php');
 }
 
-function getUsers() {
+function getUsers()
+{
     return unserialize(file_get_contents(getFilename()));
 }
 
-function getFilename() {
+function getFilename()
+{
     return 'data/users.json';
 }
 

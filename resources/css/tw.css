@@ -50,21 +50,20 @@ body{
     /* border-bottom-width: 10px; */
 }
 
-.tw-header-box{
+.tw-header .navbar-inner{
     background-color: #12769c;
     background-image: none;
     border-bottom: 10px solid #055F81;
     box-shadow: none;
-    height: 40px;    
 }
 
 .tw-twitter-bird{
-   background-image: url("../img/twitter-logo-white.png");
+    background-image: url("../img/twitter-logo-white.png");
     background-size: 25px 21px;
     height: 21px;
-    left: 0;
+    left: 30px;
     position: absolute;
-    top: 3px;
+    top: 9px;
     width: 25px;
 }
 
@@ -76,12 +75,12 @@ body{
     margin-bottom: 30px;
 }
 
-.tw-logo {
+.navbar .brand.tw-logo {
     font-size: 22px;
-    padding-left: 35px;
+    padding-left: 65px;
     position: relative;
-    top: 10px;
     color: #fefefe;
+    top: 1px;
 }
 
 #logo:hover{ 
@@ -170,21 +169,25 @@ input.search-query {
     border-top-color: #000000;
 }
 .tw-table-container{
-	width: 100%;
-	background-color: #ebebeb;
-	border-radius: 6px;
-	overflow: auto;
-	margin-top: 15px;
+    width: 100%;
+    background-color: #ebebeb;
+    border-radius: 6px;
+    overflow: auto;
+    margin-top: 15px;
 }
 .tw-ticket-table{
-	margin-top: 10px;
-	margin-bottom: 10px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
-	
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+
 }
 
 .tw-ticket-table thead tr{
-	background-color: white;
+    background-color: white;
+}
+
+.tw-main-content {
+    margin-top: 60px;
 }
