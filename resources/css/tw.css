@@ -1,14 +1,3 @@
-.tw-box {
-    border: 2px #eee solid;
-    border-radius: 6px;
-    padding: 10px;
-    margin-top: 70px;
-}
-
-.tw-login-form {
-    margin: 40px;
-}
-
 #tw-loading { 
     position: absolute; 
     left: 46%; top: 0px; 
@@ -20,13 +9,9 @@
     border-bottom-left-radius: 7px;
 }
 
-
-/*******************************************************************************/
-
 body{
     font: fontawesome;
 }
-
 
 .tw-box {
     border: 2px #eee solid;
@@ -47,14 +32,15 @@ body{
 .navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner{
     box-shadow: none;
     border-width: 0;
-    /* border-bottom-width: 10px; */
 }
 
 .tw-header .navbar-inner{
     background-color: #12769c;
     background-image: none;
+    border: none;
     border-bottom: 10px solid #055F81;
     box-shadow: none;
+    border-radius: 0;
 }
 
 .tw-twitter-bird{
@@ -66,14 +52,26 @@ body{
     top: 9px;
     width: 25px;
 }
+.tw-header .navbar-inner .search-query {
+    line-height: 20px;
+}
+.tw-header .navbar-inner a.dropdown-toggle,
+.tw-header .navbar-inner a.dropdown-toggle:hover {
+    color: #FFF;
+    text-shadow: none;
+}
+.navbar .nav li.dropdown>.dropdown-toggle .caret {
+    border-top-color: #FFF;
+    border-bottom-color: #FFF;
+}
 
-.tw-margin5{
+/*.tw-margin5{
     margin-left: 5%;
 }
 
 .tw-h1{
     margin-bottom: 30px;
-}
+}*/
 
 .navbar .brand.tw-logo {
     font-size: 22px;
@@ -96,8 +94,16 @@ body{
     color: #FFFFFF;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
+.tw-btn-primary:hover{
+    background-color: #12769C;
+    background-image: linear-gradient(to top, #09678A, #06516D);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
 
-.tw-align-right{
+/*.tw-align-right{
     float: right;
     margin-top: 9px;    
 }
@@ -106,28 +112,23 @@ body{
     background-repeat: no-repeat;
     display: inline-block;
 }
-
 .tw-icon-white{
     background-image: url("../img/glyphicons_halflings-white.png");
     background-repeat: no-repeat;
     display: inline-block;
 }
-
 a .tw-icon-user{
     background-position: -169px 0;
     height: 14px;
     width: 14px;   
 }
-
 .tw-a{
     height: 20px;
     width: 15px;
 }
-
 .tw-white{
     border-top-color: #FFFFFF;
 }
-
 .tw-menu-navbar{
     content: "";
     line-height: 0;
@@ -138,8 +139,6 @@ a .tw-icon-user{
     border-bottom-color: #d8d7d7;
     height: 48px;
 }
-
-
 input.search-query {
     border-radius: 15px 15px 15px 15px;
     left: 12px;
@@ -147,23 +146,19 @@ input.search-query {
     padding-left: 10px;
     padding-right: 24px;
 }
-
 .tw-search{
     left: -24px;
     position: relative;
 }
-
 .tw-btn-toolbar{
     position: absolute;
     margin-top: 4px;
     margin-left: 0;
 }
-
 .tw-btn-view{
     background-color: #C3C3C3;
     background-image: linear-gradient(to bottom, #E6E6E6, #C3C3C3);
 }
-
 .tw-caret-black{
     border-bottom-color: #000000;
     border-top-color: #000000;
@@ -183,11 +178,10 @@ input.search-query {
     width: 90%;
 
 }
-
 .tw-ticket-table thead tr{
     background-color: white;
 }
-
+*/
 .tw-main-content {
     margin-top: 60px;
 }

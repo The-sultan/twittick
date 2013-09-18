@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                         <form class="navbar-search pull-right" action="">
-                            <input ng-model="query" type="text" class="span2 search-query" placeholder="Search">
+                            <input type="text" class="span2 search-query" placeholder="Search">
                             <span class="tw-search"><i class="icon-search"></i></span>
                         </form>
                     </div>
