@@ -6,21 +6,12 @@
     <!--<strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.-->
 </div>
 <h1>Box View</h1>
-<div>
 
-    Search: <input ng-model="query"> /
-    Sort by: 
-    <select ng-model="orderProp">
-        <option value="title">title</option>
-        <option value="status_id">status</option>
-        <option value="priority_id">priority</option>
-        <option value="type_id">type</option>
-        <option value="description">description</option>
-    </select>
+    <div class="btn-group pull-right" data-toggle="buttons-radio">
+        <a href="#dashlist" ng-click="setListView(1)" type="button" class="btn tw-btn-view"><i class="icon-th-large"></i></a>
+        <a href="#dashbox" ng-click="setListView(0)" type="button" class="btn tw-btn-view active"><i class="icon-th-list"></i></a>
+    </div>
 
-    Dash View: <a href="#dashlist" ng-click="setListView(1)" class="btn">List</a> / <a href="#dashbox" ng-click="setListView(0)" class="btn">Box</a>
-    
-</div>
 <h3>esto sería el dash con los boxes/thumbs</h3>
 
 <div>
@@ -79,7 +70,7 @@
                             </div>
                         </div>
                     <?php elseif ($_SESSION['user']['role'] == 'executor') : ?>
-                     <div ng-switch on="ticket.status">
+                        <div ng-switch on="ticket.status">
                             <div ng-switch-when="APPROVED">
                                 <a href="#/ticket/{{ticket.id}}"><i class="icon-eye-open"></i> View</a>&nbsp;&nbsp;&nbsp;
                                 <a href="#" ng-click="doneTicket(ticket.id)"><i class="icon-check"></i> Mark as Done</a>
