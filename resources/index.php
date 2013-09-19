@@ -20,12 +20,15 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a href="/" id="logo" class="tw-logo brand" title="Home">
+                    <a href="/" id="logo" class="tw-logo brand visible-phone" title="Home">
                         <span class="tw-twitter-bird"></span> Twittick
                     </a>
                     <div class="nav-collapse collapse navbar-inverse-collapse">
+                        <a href="/" id="logo" class="tw-logo brand hidden-phone" title="Home">
+                            <span class="tw-twitter-bird"></span> Twittick
+                        </a>
                         <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
-                            <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
+                            <a href="#/new" class="btn tw-btn-primary">Create</a>                                
                         <?php endif; ?>
                         <ul class="nav pull-right">
                             <li class="dropdown">
@@ -59,9 +62,9 @@
                                         <span class="tw-twitter-bird"></span> Twittick
                                     </a>
         <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
-                                    
-                                                                    <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
-                                    
+                                        
+                                                                        <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
+                                        
         <?php endif; ?>
         
                                     <div class="btn-group tw-align-right">
@@ -90,9 +93,9 @@
                                 <div class="container">
                                     <div class="tw-btn-toolbar span9">
         <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
-                                                                        <div class="btn-group">
-                                                                            <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
-                                                                        </div>
+                                                                            <div class="btn-group">
+                                                                                <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
+                                                                            </div>
         <?php endif; ?>
         
                                         <div class="btn-group">
@@ -131,8 +134,8 @@
                         </div>
                     </div>-->
 
+        <div id="tw-loading">Loading...</div>
         <div class="tw-main-content">
-            <div id="tw-loading">Loading...</div>
             <div class="container">
                 <div ng-view></div>
             </div>

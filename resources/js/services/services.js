@@ -115,13 +115,18 @@ angular.module('SharedServices', [])
         return promise.then(function(response) {
             // do something on success
             // todo hide the spinner
-            $('#tw-loading').hide();
+            setTimeout(function() {
+                $('#tw-loading').hide();
+            }, 500);
             return response;
 
         }, function(response) {
             // do something on error
             // todo hide the spinner
-            $('#tw-loading').hide();
+            setTimeout(function() {
+                $('#tw-loading').hide();
+            }, 500);
+
             return $q.reject(response);
         });
     };

@@ -11,8 +11,18 @@
         <link href="css/fonts.css" rel="stylesheet">
 
     </head>
-    <body>
+    <body class="tw-login">
 
+        <div class="tw-header navbar">
+            <div class="navbar-inner navbar-fixed-top">
+                <div class="container">
+                    <a href="/" id="logo" class="tw-logo brand" title="Home">
+                        <span class="tw-twitter-bird"></span> Twittick
+                    </a>
+                </div>
+            </div>
+        </div>
+<!--        
         <div class="navbar navbar-fixed-top tw-header-box">
             <div class="navbar-inner tw-header-box">
                 <div class="container">                    
@@ -22,7 +32,7 @@
                     </a>                   
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <div class="container">

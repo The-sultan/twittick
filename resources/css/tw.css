@@ -1,12 +1,13 @@
 #tw-loading { 
     position: absolute; 
     left: 46%; top: 0px; 
-    display: none; 
+    /*display: none;*/ 
     background: gold; 
     padding: 3px 20px; 
     font-weight: bold; 
     border-bottom-right-radius: 7px; 
     border-bottom-left-radius: 7px;
+    z-index: 2000;
 }
 
 body{
@@ -17,9 +18,11 @@ body{
     border: 2px #eee solid;
     border-radius: 6px;
     padding: 10px;
-    margin-top: 10%;
+    margin-top: 10px;
 }
-
+.tw-login .tw-box {
+    margin-top: 50px;
+}
 .tw-login-form {
     margin: 40px;
 }

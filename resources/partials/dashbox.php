@@ -5,14 +5,12 @@
     <span class="tw-alert-message"> </span>
     <!--<strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.-->
 </div>
-<h1>Box View</h1>
+<h1 class="pull-left">Box View</h1>
 
-    <div class="btn-group pull-right" data-toggle="buttons-radio">
-        <a href="#dashlist" ng-click="setListView(1)" type="button" class="btn tw-btn-view"><i class="icon-th-large"></i></a>
-        <a href="#dashbox" ng-click="setListView(0)" type="button" class="btn tw-btn-view active"><i class="icon-th-list"></i></a>
-    </div>
-
-<h3>esto sería el dash con los boxes/thumbs</h3>
+<div class="btn-group pull-right" data-toggle="buttons-radio">
+    <a href="#dashlist" ng-click="setListView(1)" type="button" class="btn tw-btn-view"><i class="icon-th-large"></i></a>
+    <a href="#dashbox" ng-click="setListView(0)" type="button" class="btn tw-btn-view active"><i class="icon-th-list"></i></a>
+</div>
 
 <div>
     <table class="table">

@@ -5,7 +5,7 @@
     <span class="tw-alert-message"> </span>
     <!--<strong>Cool!</strong> The ticket was successfully removed. <a href="#"><i class="icon-undo"></i> Undo</a>.-->
 </div>
-<h1>List View</h1>
+<h1 class="pull-left">List View</h1>
 
 <div class="btn-group pull-right" data-toggle="buttons-radio">
     <a href="#dashlist" ng-click="setListView(1)" type="button" class="btn tw-btn-view active"><i class="icon-th-large"></i></a>
@@ -16,19 +16,19 @@
     <table class="tw-ticket-table table">
         <thead>
             <tr>
+                <th>&nbsp;</th>
                 <th>Title</th>
                 <th>Type</th>
                 <th>Status</th>
-                <th>Priority</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="ticket in tickets | filter:query | orderBy:orderProp" class="tw-{{ticket.priority | lowercase}}">
+            <tr ng-repeat="ticket in tickets | filter:query | orderBy:orderProp">
+                <td><img src="/img/priority/{{ticket.priority | lowercase}}.gif" /></td>
                 <td><b>{{ticket.title}}</b></td>
                 <td>{{ticket.type}}</td>
                 <td>{{ticket.status}}</td>
-                <td>{{ticket.priority}}</td>
                 <td>
                     <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
 
