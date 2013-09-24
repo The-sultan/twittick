@@ -8,7 +8,27 @@ function DashCtrl($scope, $route, ticketService, userService, alertService) {
     ticketService.getTickets().then(function(data) {
         $scope.tickets = data;
     });
-
+	
+//    ticketService.getTickets().then(function(data) {
+//		$scope.tickets = [];
+//		var i= -1;
+//		for(var j=0;j<data.length;j++){
+//			var mod = j % 4;
+//			if( mod == 0){
+//				i++;
+//				$scope.tickets[i] = [];
+//				
+//			}
+//			$scope.tickets[i][mod] = data[j];
+//		}
+//    });
+	
+//    $scope.submitCancelTicket = function(index) {
+//        var qs = $.param($scope.tickets[index]) + '&comment=' + $scope.comment;
+//        ticketService.updateTicket(qs).then(function(data) {
+//            return true;
+//        });
+//    };
     $scope.approveTicket = function(id) {
         var ticket = getTicket(id, $scope.tickets);
         ticket.status_id = '2';
