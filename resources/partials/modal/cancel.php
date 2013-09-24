@@ -1,12 +1,9 @@
-<form ng-submit="submitCancelTicket(ticket.id)">
+<form ng-submit="submitActionModal();">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h3>Cancel ticket: {{ticket.title}}</h3>
     </div>
     <div class="modal-body">
-
-        <input type="hidden" ng-model="ticket.id">
-        <input type="hidden" ng-model="ticket.status_id" value="3">
 
         <div class="control-group">
             <label class="control-label" for="comment">* Comment:</label>

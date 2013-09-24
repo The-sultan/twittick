@@ -98,6 +98,40 @@ twittick.service('userService', function($http, $q) {
     return userService;
 });
 
+twittick.service('alertService', function() {
+
+    var alertService = {};
+    alertService.alert = {};
+    alertService.alert.closed = true;
+
+    alertService.showError = function(title, content) {
+        alertService.alert.type = 'error';
+        common(title, content);
+    };
+
+    alertService.showInfo = function(title, content) {
+        alertService.alert.type = 'info';
+        common(title, content);
+    };
+
+    alertService.showSuccess = function(title, content) {
+        alertService.alert.type = 'success';
+        common(title, content);
+    };
+
+    alertService.hide = function() {
+        alertService.alert.closed = true;
+    };
+
+    function common(title, content) {
+        alertService.alert.title = title;
+        alertService.alert.content = content;
+        alertService.alert.closed = false;
+    }
+
+    return alertService;
+});
+
 // source: http://jsfiddle.net/dBR2r/8/
 angular.module('SharedServices', [])
         .config(function($httpProvider) {

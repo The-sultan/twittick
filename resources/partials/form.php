@@ -16,14 +16,6 @@
 
 <div class="well">
 
-    <div class="alert alert-success" style="display: none;">
-        This ticket was saved.
-    </div>
-
-    <div class="alert alert-error" style="display: none;">
-        There was an error saving the ticket.
-    </div>
-
     <form ng-submit="submit()" class="form-horizontal">
 
         <input type="hidden" ng-model="ticket.id">

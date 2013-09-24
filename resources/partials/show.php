@@ -1,6 +1,8 @@
+<?php session_start(); ?>
+
 <ul class="breadcrumb">
-  <li><a href="#dash">Home</a> <span class="divider">/</span></li>
-  <li class="active">{{ticket.title}}</li>
+    <li><a href="#dash">Home</a> <span class="divider">/</span></li>
+    <li class="active">{{ticket.title}}</li>
 </ul>
 
 <div>
@@ -9,7 +11,9 @@
     <p>Status: {{ticket.status}}</p>
     <p>Priority: {{ticket.priority}}</p>
     <p>Description: {{ticket.description}}</p>
-    <a href="#/ticket/{{ticket.id}}/edit" class="btn">Edit</a>
+    <?php if ($_SESSION['user']['role'] == 'requestor' OR $_SESSION['user']['role'] == 'approver') : ?>
+        <a href="#/ticket/{{ticket.id}}/edit" class="btn">Edit</a>
+    <?php endif; ?>
 </div>
 
 <div>

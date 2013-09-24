@@ -75,7 +75,7 @@ function edit() {
     foreach ($fields as $field) {
         if (isset($_REQUEST[$field])) {
             $activity = array();
-            echo $tickets[$_REQUEST['id']][$field];
+
             if ($tickets[$_REQUEST['id']][$field] != $_REQUEST[$field]) {
                 if (in_array($field, array('status_id', 'type_id', 'priority_id'))) {
                     $method = 'get' . ucfirst(str_replace('_id', '', $field)) . 'Name';

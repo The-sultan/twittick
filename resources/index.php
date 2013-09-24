@@ -62,9 +62,9 @@
                                         <span class="tw-twitter-bird"></span> Twittick
                                     </a>
         <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
-                                        
-                                                                        <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
-                                        
+                                                    
+                                                                                    <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
+                                                    
         <?php endif; ?>
         
                                     <div class="btn-group tw-align-right">
@@ -93,9 +93,9 @@
                                 <div class="container">
                                     <div class="tw-btn-toolbar span9">
         <?php if ($_SESSION['user']['role'] == 'requestor') : ?>
-                                                                            <div class="btn-group">
-                                                                                <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
-                                                                            </div>
+                                                                                        <div class="btn-group">
+                                                                                            <a href="#/new" class="btn tw-btn-primary">Create Ticket</a>                                
+                                                                                        </div>
         <?php endif; ?>
         
                                         <div class="btn-group">
@@ -164,9 +164,9 @@
         <script src="js/services/services.js"></script>
 
         <script src="js/controllers/dash.js"></script>
-        <script src="js/controllers/list.js"></script>
         <script src="js/controllers/show.js"></script>
         <script src="js/controllers/form.js"></script>
+        <script src="js/controllers/modal.js"></script>
 
         <script src="js/app.js"></script>
 

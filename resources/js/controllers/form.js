@@ -1,8 +1,8 @@
-function FormCtrl($scope, $routeParams, ticketService) {
+function FormCtrl($scope, $routeParams, $route, $location, ticketService, alertService) {
 
-    // EDIT
     $scope.isNew = true;
     $scope.selection = 'new';
+    // EDIT
     if ($routeParams.ticketId) {
         $scope.isNew = false;
         $scope.selection = 'edit';
@@ -16,8 +16,12 @@ function FormCtrl($scope, $routeParams, ticketService) {
         if ($routeParams.ticketId) {
             // EDIT
             ticketService.updateTicket($.param($scope.ticket)).then(function(data) {
+                $route.reload();
                 if (data) {
-                    $('.alert-success').show();
+                    alertService.showSuccess('Success!', 'Ticket saved');
+                }
+                else {
+                    alertService.showError('Error', 'An unknown error has occurred');
                 }
             });
         } else {
@@ -25,7 +29,12 @@ function FormCtrl($scope, $routeParams, ticketService) {
             $scope.ticket.status_id = 1;
             ticketService.createTicket($.param($scope.ticket)).then(function(data) {
                 if (data) {
-                    $('.alert-success').show();
+                    $location.path('/ticket/' + data.ticket_id + '/edit');
+                    alertService.showSuccess('Success!', 'Ticket saved');
+                }
+                else {
+                    $route.reload();
+                    alertService.showError('Error', 'An unknown error has occurred');
                 }
             });
         }
