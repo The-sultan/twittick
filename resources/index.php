@@ -6,6 +6,8 @@
 
         <link href="css/lib/bootstrap.min.css" rel="stylesheet">
         <link href="css/lib/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="css/lib/bootstrap-datepicker.css" rel="stylesheet">
+        <link href="css/lib/bootstrap-timepicker.css" rel="stylesheet">
         <link href="css/lib/font-awesome.min.css" rel="stylesheet">
         <link href="css/tw.css" rel="stylesheet">
 
@@ -135,6 +137,7 @@
                     </div>-->
 
         <div id="tw-loading">Loading...</div>
+        
         <div class="tw-main-content">
             <div class="container">
                 <div ng-view></div>
@@ -146,6 +149,9 @@
         <script src="js/lib/bootstrap.min.js"></script>
 
         <script src="js/lib/angular-strap.min.js?v=0.7.5"></script>
+        
+        <script src="js/lib/bootstrap-datepicker.js"></script>
+        <script src="js/lib/bootstrap-timepicker.js"></script>
 
         <script src="js/directives/alert.js"></script>
         <script src="js/directives/button.js"></script>

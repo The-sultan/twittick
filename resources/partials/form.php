@@ -21,18 +21,18 @@
         <input type="hidden" ng-model="ticket.id">
         <input type="hidden" ng-model="ticket.status_id" value="{{ticket.status_id}}">
 
-<!--        <div class="control-group">
-            <label class="control-label" for="status">* Status:</label>
-            <div class="controls">
-                <select id="status" ng-model="ticket.status_id" required>
-                    <option value="1">NEW</option>
-                    <option value="2">APPROVED</option>
-                    <option value="3">CANCELLED</option>
-                    <option value="4">REJECTED</option>
-                    <option value="5">DONE</option>
-                </select>
-            </div>
-        </div>-->
+        <!--        <div class="control-group">
+                    <label class="control-label" for="status">* Status:</label>
+                    <div class="controls">
+                        <select id="status" ng-model="ticket.status_id" required>
+                            <option value="1">NEW</option>
+                            <option value="2">APPROVED</option>
+                            <option value="3">CANCELLED</option>
+                            <option value="4">REJECTED</option>
+                            <option value="5">DONE</option>
+                        </select>
+                    </div>
+                </div>-->
 
         <div class="control-group">
             <label class="control-label" for="title">* Title:</label>
@@ -85,10 +85,35 @@
                 </select>
             </div>
         </div>
+
+        <div class="control-group">
+            <label class="control-label" for="due-date">* Due date:</label>
+            <div class="input-append">
+                <input type="text" class="input-small" ng-model="datepicker.date" data-date-format="mm/dd/yyyy" bs-datepicker>
+                <button type="button" class="btn" data-toggle="datepicker"><i class="icon-calendar"></i></button>
+            </div>
+            <div class="input-append">
+                <input type="text" class="input-small" ng-model="timepicker.time" bs-timepicker>
+                <button type="button" class="btn" data-toggle="timepicker"><i class="icon-time"></i></button>
+            </div>
+            <label class="checkbox">
+                <input type="checkbox"> Has due date?
+            </label>
+        </div>
+
         <div class="control-group">
             <label class="control-label" for="description">* Description:</label>
             <div class="controls">
-                <textarea id="description" ng-model="ticket.description"></textarea>
+                <textarea id="description" ng-model="ticket.description" required maxlength="30"></textarea>
+                <br>
+                <small>Be as detailed as possible</small>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Attachments:</label>
+            <div class="controls">
+                <small>Attachments</small>
             </div>
         </div>
 
